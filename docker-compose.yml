@@ -1,4 +1,13 @@
 services:
+  api:
+    build: .
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URL=mongodb://root:root@mongodb:27017
   mongodb:
     image: mongo:6.0
     container_name: mongodb
